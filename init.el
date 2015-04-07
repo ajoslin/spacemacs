@@ -12,6 +12,11 @@
 (defconst spacemacs-version          "0.102.2" "Spacemacs version.")
 (defconst spacemacs-emacs-min-version   "24.3" "Minimal version of Emacs.")
 
+(setq ns-use-native-fullscreen nil)
+(when (and (display-graphic-p) (eq system-type 'darwin))
+  (with-eval-after-load 'exec-path-from-shell
+    (exec-path-from-shell-setenv "SHELL" "/bin/bash")))
+
 (defun spacemacs/emacs-version-ok ()
   (version<= spacemacs-emacs-min-version emacs-version))
 
